@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <meta name="description" content="Newton cradle by using HTML and CSS only.">
+  <meta name="keywords" content="HTML, CSS, JavaScript, CSS Variables, Pseudo Elements">
+  <meta name="author" content="Priya SIngh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newton Cradle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: black;
+      display: grid;
+      place-items: center;
+      min-height: 100vh;
+      padding: 5vw;
+    }
+
+    h1 {
+      color: azure;
+      font-family: cursive;
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      text-align: center;
+      margin-bottom: 2vh;
+    }
+
+    :root {
+      --CradelBG: rgb(97, 93, 93);
+    }
+
+    .cradel {
+      text-align: center;
+      background-color: beige;
+      height: 80vh;
+      width: 90vw;
+      max-width: 900px;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #cradelHanger {
+      margin-top: 10vh;
+      background-color: var(--CradelBG);
+      height: 2.5vh;
+      width: 80%;
+      max-width: 640px;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .Cradelstrings {
+      background-color: var(--CradelBG);
+      width: 0.5vw;
+      min-width: 3px;
+      max-width: 8px;
+      height: 30vh;
+      position: relative;
+      margin: 0 1.6vw;
+    }
+
+    .Cradelstrings::before {
+      content: "";
+      background-color: var(--CradelBG);
+      height: 8vh;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    #string1 {
+      animation: left-ball 1s linear infinite;
+      transform-origin: top left;
+    }
+
+    #string5 {
+      animation: right-ball 1s linear 0.5s infinite;
+      transform-origin: top right;
+    }
+
+    @keyframes left-ball {
+      0% {
+        rotate: 0deg;
+      }
+      25% {
+        rotate: 50deg;
+      }
+      50% {
+        rotate: 0deg;
+      }
+      100% {
+        rotate: 0deg;
+      }
+    }
+
+    @keyframes right-ball {
+      0% {
+        rotate: 0deg;
+      }
+      25% {
+        rotate: -50deg;
+      }
+      50% {
+        rotate: 0deg;
+      }
+      100% {
+        rotate: 0deg;
+      }
+    }
+
+    audio {
+      position: absolute;
+      bottom: 1rem;
+      width: 90%;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Newton's Cradle</h1>
+  <div class="cradel">
+    <div id="cradelHanger">
+      <div class="Cradelstrings" id="string1"></div>
+      <div class="Cradelstrings" id="string2"></div>
+      <div class="Cradelstrings" id="string3"></div>
+      <div class="Cradelstrings" id="string4"></div>
+      <div class="Cradelstrings" id="string5"></div>
+    </div>
+    <audio id="CradelBallsHitting" autoplay loop controls>
+      <source src="./CradelSound.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+</body>
+</html>
